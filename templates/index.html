@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>CMDB - Inventário de Ativos</title>
+    <link rel="stylesheet" href="../static/style.css" />
+</head>
+<body>
+    <h1>Cadastro de Ativos - CMDB</h1>
+
+    <form action="/add" method="post">
+        <label for="name">Nome do Ativo:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+
+        <label for="purchase_date">Data de Compra:</label><br />
+        <input type="date" id="purchase_date" name="purchase_date" required /><br />
+
+        <label for="model_version">Versão/Modelo:</label><br />
+        <input type="text" id="model_version" name="model_version" required /><br />
+
+        <label for="owner">Usuário Proprietário:</label><br />
+        <input type="text" id="owner" name="owner" required /><br /><br />
+
+        <button type="submit">Adicionar Ativo</button>
+    </form>
+
+    <h2>Ativos Cadastrados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Compra</th>
+                <th>Versão/Modelo</th>
+                <th>Proprietário</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asset in assets %}
+            <tr>
+                <td>{{ asset[0] }}</td>
+                <td>{{ asset[1] }}</td>
+                <td>{{ asset[2] }}</td>
+                <td>{{ asset[3] }}</td>
+                <td>{{ asset[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
